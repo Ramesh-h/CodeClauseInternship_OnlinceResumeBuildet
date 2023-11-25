@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Resume Builder</title>
+ <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 5;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 120vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+	<form th:object="${person}" th:action="@{/resume/create}" method="post">
+		<label for="firstName">First Name:</label> <input type="text"
+			id="firstName" name="firstName" th:field="*{firstName}" required><br>
+		<label for="lastName">Last Name:</label> <input type="text"
+			id="lastName" name="lastName" th:field="*{lastName}" required><br>
+		<label for="email">Email:</label> <input type="text"
+			id="email" name="email" th:field="*{email}" required><br>
+		<label for="phone">phone:</label> <input type="text"
+			id="phone" name="phone" th:field="*{phone}" required><br>
+		<label for="skills">skills:</label> <input type="text"
+			id="skills" name="skills" th:field="*{skills}" required><br>
+		<label for="education">Education:</label> <input type="text"
+			id="education" name="education" th:field="*{education}" required><br>
+		<label for="address">address:</label> <input type="text"
+			id="address" name="address" th:field="*{address}" required><br>
+		<label for="city">city:</label> <input type="text"
+			id="city" name="city" th:field="*{city}" required><br>
+		<label for="state">state:</label> <input type="text"
+			id="state" name="state" th:field="*{state}" required><br>
+		<label for="zipcode">zipcode:</label> <input type="text"
+			id="zipcode" name="zipcode" th:field="*{zipcode}" required><br>
+		<label for="experience">experience:</label> <input type="text"
+			id="experience" name="experience" th:field="*{experience}" required><br>
+
+		<button type="submit">Create Resume</button>
+	</form>
+
+	<p th:text="${message}"></p>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            width: 400px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        p {
+            margin-bottom: 16px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Add additional styling as needed */
+        .download-button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label>Name:</label>
+        <p th:text="' ' + ${person.firstName} + ' ' + ${person.lastName}"></p>
+
+        <label>Email:</label>
+        <p th:text="' ' + ${person.email}"></p>
+
+        <label>Phone:</label>
+        <p th:text="' ' + ${person.phone}"></p>
+
+        <label>Education:</label>
+        <p th:text="' ' + ${person.education}"></p>
+
+        <label>Experience:</label>
+        <p th:text="' ' + ${person.experience}"></p>
+
+        <label>Skills:</label>
+        <ul th:if="${person.skills}">
+            <li th:each="skill : ${person.skills}" th:text="' ' + ${skill}"></li>
+        </ul>
+
+        <label>Address:</label>
+        <p th:text="' ' + ${person.address}"></p>
+
+        <label>City:</label>
+        <p th:text="' ' + ${person.city}"></p>
+
+        <label>State:</label>
+        <p th:text="' ' + ${person.state}"></p>
+
+        <label>Zipcode:</label>
+        <p th:text="' ' + ${person.zipcode}"></p>
+
+        <a th:href="@{/resume/download-pdf/{id}(id=${person.id})}" class="download-button">Download Resume as PDF</a>
+        <!-- Add more sections for other resume details -->
+    </form>
+</body>
+</html>
